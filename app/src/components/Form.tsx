@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { categories } from "../data/Categories";
-import { Activity, Category } from '../types/index';
-
+import type { Activity } from '../types/index';
 
 
 const Form = () => {
@@ -89,7 +88,6 @@ const Form = () => {
                 className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10"
                 value={activity.calories === 1 ? 'Guardar Comida' : 'Guardar Ejercicio'}
                 disabled={!isValidActivity()}
-
             />
         </form>
     );
