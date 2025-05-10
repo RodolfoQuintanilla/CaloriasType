@@ -1,3 +1,4 @@
+
 import { Activity } from '../types/index';
 
 
@@ -20,8 +21,11 @@ export const ActivityReducer = (
 
     if (action.type === 'save-activity') {
         //Estecodigo maneja la logica del state
-        console.log('desde el type de save-activity');
 
+        return {
+            ...state,
+            activities: [...state.activities, action.paylod.newActivity]
+        }
     }
-
+    return state
 }
