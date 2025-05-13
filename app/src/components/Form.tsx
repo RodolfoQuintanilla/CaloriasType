@@ -1,20 +1,25 @@
 import { Dispatch, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { categories } from "../data/Categories";
 import type { Activity } from '../types/index';
-import { ActivityAction } from "../reducers/activity-redcer";
+import { ActivityAction, initialState } from "../reducers/activity-redcer";
 import { Activity } from '../types/index';
 
 type FormPros = {
     dispatch: Dispatch<ActivityAction>
 }
 
+const initialState: Activity = {
+    id: uuidv4(),
+    category: 1,
+    name: '',
+    calories: 0
+}
+
+
 const Form = ({ dispatch }: FormPros) => {
 
-    const [activity, setActivity] = useState<Activity>({
-        category: 1,
-        name: '',
-        calories: 0
-    });
+    const [activity, setActivity] = useState<Activity>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
 
@@ -37,7 +42,10 @@ const Form = ({ dispatch }: FormPros) => {
         e.preventDefault()
 
         dispatch({ type: "save-activity", paylod: { newActivity: activity } })
-
+        setActivity({
+            ...initialState,
+            id: uuidv4()
+        })
     }
 
     return (
