@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { categories } from "../data/Categories";
 import type { Activity } from '../types/index';
 import { ActivityAction, initialState } from "../reducers/activity-redcer";
-import { Activity } from '../types/index';
+
 
 type FormPros = {
     dispatch: Dispatch<ActivityAction>
